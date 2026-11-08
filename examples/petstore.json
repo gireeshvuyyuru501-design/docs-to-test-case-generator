@@ -1,0 +1,14 @@
+{
+  "openapi": "3.0.3",
+  "info": {"title": "Petstore sample", "version": "1.0.0"},
+  "paths": {
+    "/pets": {
+      "get": {"operationId": "listPets", "parameters": [{"name": "limit", "in": "query", "required": false, "schema": {"type": "integer"}}], "responses": {"200": {"description": "A list of pets"}}},
+      "post": {"operationId": "createPet", "security": [{"api_key": []}], "requestBody": {"required": true}, "responses": {"201": {"description": "Created"}}}
+    },
+    "/pets/{petId}": {
+      "get": {"operationId": "getPet", "parameters": [{"name": "petId", "in": "path", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "Found"}, "404": {"description": "Not found"}}}
+    }
+  },
+  "components": {"securitySchemes": {"api_key": {"type": "apiKey", "in": "header", "name": "X-API-Key"}}}
+}
